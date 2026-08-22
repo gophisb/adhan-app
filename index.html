@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>سفينة الأذان</title>
+
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <main class="app">
+    <header class="topbar">
+      <div>
+        <p class="brand-label">ADHAN SHIP</p>
+        <h1>سفينة الأذان</h1>
+        <p class="subtitle">
+          سفينة تجوب البحر وتذكّرك بمواقيت الصلوات الخمس
+        </p>
+      </div>
+
+      <div class="location-status">
+        <span class="pulse"></span>
+        <span id="locationText">بانتظار تحديد الموقع</span>
+      </div>
+    </header>
+
+    <section class="layout">
+      <section class="scene-card">
+        <div id="sceneContainer"></div>
+
+        <div class="next-prayer-card">
+          <span class="next-label">الصلاة القادمة</span>
+          <strong id="nextPrayerName">—</strong>
+          <span id="nextPrayerTime">--:--</span>
+          <small id="countdown">جارٍ تحميل المواقيت...</small>
+        </div>
+      </section>
+
+      <aside class="control-panel">
+        <section class="panel-section">
+          <h2>مواقيت اليوم</h2>
+
+          <div id="prayerList" class="prayer-list">
+            <div class="prayer-row">
+              <span>الفجر</span>
+              <strong>--:--</strong>
+            </div>
+
+            <div class="prayer-row">
+              <span>الظهر</span>
+              <strong>--:--</strong>
+            </div>
+
+            <div class="prayer-row">
+              <span>العصر</span>
+              <strong>--:--</strong>
+            </div>
+
+            <div class="prayer-row">
+              <span>المغرب</span>
+              <strong>--:--</strong>
+            </div>
+
+            <div class="prayer-row">
+              <span>العشاء</span>
+              <strong>--:--</strong>
+            </div>
+          </div>
+        </section>
+
+        <section class="panel-section">
+          <h2>إعداد الموقع</h2>
+
+          <button id="locationButton" class="primary-button" type="button">
+            ◉ استخدام موقعي الحالي
+          </button>
+
+          <div class="coordinates-grid">
+            <label>
+              خط العرض
+              <input
+                id="latitudeInput"
+                type="number"
+                step="0.0001"
+                placeholder="مثال: 24.7136"
+              />
+            </label>
+
+            <label>
+              خط الطول
+              <input
+                id="longitudeInput"
+                type="number"
+                step="0.0001"
+                placeholder="مثال: 46.6753"
+              />
+            </label>
+          </div>
+
+          <button id="manualLocationButton" class="secondary-button" type="button">
+            تحديث من الإحداثيات
+          </button>
+        </section>
+
+        <section class="panel-section">
+          <h2>إعدادات الأذان</h2>
+
+          <label class="field-label">
+            طريقة الحساب
+            <select id="methodSelect">
+              <option value="3">Muslim World League</option>
+              <option value="2">Islamic Society of North America</option>
+              <option value="4">Umm Al-Qura</option>
+              <option value="5">Egyptian General Authority</option>
+              <option value="1">University of Islamic Sciences, Karachi</option>
+            </select>
+          </label>
+
+          <label class="audio-upload">
+            <span>اختر ملف الأذان</span>
+            <input id="adhanFileInput" type="file" accept="audio/*" />
+          </label>
+
+          <p id="audioStatus" class="hint">
+            لم يتم اختيار ملف أذان بعد.
+          </p>
+
+          <button id="enableAdhanButton" class="adhan-button" type="button">
+            🔊 تفعيل الأذان والتنبيهات
+          </button>
+
+          <button id="testAdhanButton" class="secondary-button" type="button">
+            ▶ اختبار الصوت
+          </button>
+        </section>
+
+        <section class="panel-section note-box">
+          <h2>ملاحظة</h2>
+          <p>
+            تأكد من صحة الموقع وطريقة الحساب، ثم قارن المواقيت مع مسجدك المحلي
+            أو الهيئة الرسمية في مدينتك.
+          </p>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <audio id="adhanAudio" preload="auto"></audio>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
